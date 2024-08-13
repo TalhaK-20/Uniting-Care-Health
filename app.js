@@ -317,7 +317,7 @@ app.post('/reset-password-user', async (req, res) => {
                     
                     <p style="margin-bottom: 20px; color: #333;">Please click the following link to reset your password:</p>
                     
-                    <a href="http://localhost:3000/reset-password-user/${resetToken}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Reset Password</a>
+                    <a href="https://unitinghealth.onrender.com/reset-password-user/${resetToken}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Reset Password</a>
 
                 </div>
             </div>
