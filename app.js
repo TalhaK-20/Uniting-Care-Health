@@ -186,10 +186,9 @@ app.post('/signup-user', async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
-        const existingUser = await User.findOne({ username });
-        const existingUser2 = await User.findOne({ email });
+        const existingUser = await User.findOne({ $or: [{ username }, { email }] });
 
-        if (existingUser || existingUser2) {
+        if (existingUser) {
             return res.status(400).json({ error: 'User already exists' });
         }
 
@@ -439,3 +438,4 @@ app.listen(port, () => {
 
 
 // --------------------- End ---------------------
+
