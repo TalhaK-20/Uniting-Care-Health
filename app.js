@@ -306,7 +306,7 @@ app.post('/reset-password-user', async (req, res) => {
                     
                     <h1 style="color: #fff; margin-top: 0; padding: 20px 0; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); animation: fadeIn 2s ease-in-out;">
                     
-                    <span style="font-weight: bold; font-size: 24px;">Uniting<i>Health</i> Australia</span>
+                    <span style="font-weight: bold; font-size: 24px;">Uniting<i>Health</i> Care</span>
                     
                     </h1>
                 
