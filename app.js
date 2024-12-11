@@ -306,7 +306,7 @@ app.post('/reset-password-user', async (req, res) => {
                     
                     <h1 style="color: #fff; margin-top: 0; padding: 20px 0; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); animation: fadeIn 2s ease-in-out;">
                     
-                    <span style="font-weight: bold; font-size: 24px;">Uniting<i>Health</i> Care</span>
+                    <span style="font-weight: bold; font-size: 24px;">Uniting<i>Care</i> Health</span>
                     
                     </h1>
                 
@@ -316,7 +316,7 @@ app.post('/reset-password-user', async (req, res) => {
                     
                     <p style="margin-bottom: 20px; color: #333;">Please click the following link to reset your password:</p>
                     
-                    <a href="https://unitinghealth.onrender.com/reset-password-user/${resetToken}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Reset Password</a>
+                    <a href="https://unitingcarehealth.onrender.com/reset-password-user/${resetToken}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Reset Password</a>
 
                 </div>
             </div>
