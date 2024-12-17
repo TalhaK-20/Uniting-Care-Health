@@ -144,6 +144,22 @@ app.get('/', (req, res) => {
     res.render("index.ejs");
 });
 
+app.get('/about-us', (req, res) => {
+    res.render("about-us.ejs")
+})
+
+app.get('/advocacy', (req, res) => {
+    res.render("advocacy.ejs")
+})
+
+app.get('/news', (req, res) => {
+    res.render("news.ejs")
+})
+
+app.get('/contact-us', (req, res) => {
+    res.render("contact-us.ejs")
+})
+
 app.get('/login-user', (req, res) => {
     res.render("user/login-signup-user", { error: null });
 });
