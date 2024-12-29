@@ -245,24 +245,34 @@
         <h1 class="username-heading" id="usernameHeading" style="text-align: center; margin-top: 80px;"></h1>
         <div class="main-container">
 
-            <a class="btn btn-default" id="downloadCV">UnitingCare Health Data Analysis File</a>
+            <a class="btn btn-default" id="downloadCV" style="width: 340px;
+            border: 2px solid blue;
+            text-align: center;
+            cursor: pointer;
+            background-color: antiquewhite;
+            ">UnitingCare Health Data Analysis File</a>
 
             <script>
                 function downloadCV() {
                     var cvUrl = '/files/data-analysis-file.pbix';
                     var link = document.createElement('a');
+
+                    // Set the href to the file URL
                     link.href = cvUrl;
-                    link.download = "data-analysis-file";
 
+                    // Specify the correct filename with extension
+                    link.download = "data-analysis-file.pbix";
+
+                    // Append the link to the document body, trigger the click to start download, and then remove the link
                     document.body.appendChild(link);
-
                     link.click();
-
                     document.body.removeChild(link);
                 }
 
+                // Attach the function to the click event of the button
                 document.getElementById('downloadCV').addEventListener('click', downloadCV);
             </script>
+
 
 
 
