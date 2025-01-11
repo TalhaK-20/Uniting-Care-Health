@@ -160,6 +160,10 @@ app.get('/contact-us', (req, res) => {
     res.render("contact-us.ejs")
 })
 
+app.get('/add-new-user', (req, res) => {
+    res.render("user/add-new-user.ejs");
+});
+
 app.get('/login-user', (req, res) => {
     res.render("user/login-signup-user", { error: null });
 });
@@ -218,6 +222,33 @@ app.post('/signup-user', async (req, res) => {
             res.redirect('/user-dashboard');
         }
 
+    }
+
+    catch (error) {
+        console.error('Error during signup:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+app.post('/admin-add-&-signup-user', async (req, res) => {
+
+    try {
+        const { username, email, password } = req.body;
+
+        const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+
+        if (existingUser) {
+            return res.status(400).json({ error: 'User already exists' });
+        }
+
+        const newUser = new User({ username, email, password });
+        await newUser.save();
+
+        const foundUser = await User.findOne({ username, email, password });
+
+        if (foundUser) {
+            res.redirect('/login-user');
+        }
     }
 
     catch (error) {
@@ -454,4 +485,3 @@ app.listen(port, () => {
 
 
 // --------------------- End ---------------------
-
