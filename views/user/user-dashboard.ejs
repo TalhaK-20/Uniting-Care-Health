@@ -243,28 +243,45 @@
 
     <div class="container">
         <h1 class="username-heading" id="usernameHeading" style="text-align: center; margin-top: 80px;"></h1>
-        <div class="main-container" style="margin-left: -200px;">
+        <div class="main-container">
 
-            <a class="btn btn-default" id="downloadCV" style="width: 340px;
-            border: 2px solid blue;
-            text-align: center;
-            cursor: pointer;
-            background-color: antiquewhite; margin-left: 200px;
-            ">UnitingCare Health Data Analysis File</a>
+            <div style="display: flex; flex-direction: column; align-items: center; margin-top: 50px;">
+                <!-- Buttons -->
+                <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+                    <a class="btn btn-default" id="downloadCV" style="width: 340px;
+                        border: 2px solid blue;
+                        text-align: center;
+                        cursor: pointer;
+                        background-color: antiquewhite; margin: 0 15px;">
+                        UnitingCare Health Data Analysis File
+                    </a>
 
-            <a href="https://app.powerbi.com/reportEmbed?reportId=443cd963-c945-49d3-a37b-97d38c8fb2ae&autoAuth=true&ctid=ecbdb6b6-ebe2-4a6a-8143-9fa7ed7c46cc" class="btn btn-default" id="#" style="width: 340px;
-            border: 2px solid blue;
-            text-align: center;
-            cursor: pointer;
-            background-color: antiquewhite; margin-left: 50px; text-decoration: none;
-            ">Online Data Analysis View</a>
+                    <a href="https://app.powerbi.com/reportEmbed?reportId=443cd963-c945-49d3-a37b-97d38c8fb2ae&autoAuth=true&ctid=ecbdb6b6-ebe2-4a6a-8143-9fa7ed7c46cc"
+                        class="btn btn-default" id="#" style="width: 340px;
+                        border: 2px solid blue;
+                        text-align: center;
+                        cursor: pointer;
+                        background-color: antiquewhite; margin: 0 15px; text-decoration: none;">
+                        Online Data Analysis View
+                    </a>
 
-            <a href="/add-new-user" class="btn btn-default" id="#" style="width: 340px;
-            border: 2px solid blue;
-            text-align: center;
-            cursor: pointer;
-            background-color: antiquewhite; margin-left: 50px; text-decoration: none;
-            ">Add New User</a>
+                    <a href="/add-new-user" class="btn btn-default" id="#" style="width: 340px;
+                        border: 2px solid blue;
+                        text-align: center;
+                        cursor: pointer;
+                        background-color: antiquewhite; margin: 0 15px; text-decoration: none;">
+                        Add New User
+                    </a>
+                </div>
+
+                <!-- Power BI iframe -->
+                <iframe title="UnitingCare Health - Complete Data Analysis" width="800" height="500"
+                    src="https://app.powerbi.com/view?r=eyJrIjoiMTE0MGExYzgtZDg1Ni00MDI0LWJjODMtOGE1YzZkZjI4ZDdiIiwidCI6IjNhMDQ0NDBkLTA0YzItNGQwMC1iYzZlLWZjNGY4ZDJkODBhOSJ9&embedImagePlaceholder=true&pageName=6b482b0240bc632ac804"
+                    frameborder="0" allowFullScreen="true"
+                    style="border: 2px solid #0078d4; border-radius: 10px; margin-top: 20px;">
+                </iframe>
+            </div>
+
 
             <script>
                 function downloadCV() {
@@ -456,5 +473,4 @@
     </script>
 
 </body>
-
 </html>
