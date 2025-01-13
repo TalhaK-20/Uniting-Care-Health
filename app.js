@@ -160,6 +160,10 @@ app.get('/contact-us', (req, res) => {
     res.render("contact-us.ejs")
 })
 
+app.get('/authentication-unitingcarehealth-adminside%%securitykey', (req, res) => {
+    res.render("user/security-key.ejs");
+});
+
 app.get('/add-new-user', (req, res) => {
     res.render("user/add-new-user.ejs");
 });
@@ -227,6 +231,27 @@ app.post('/signup-user', async (req, res) => {
     catch (error) {
         console.error('Error during signup:', error);
         res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+app.get('/test-admin', async (req, res) => {
+    const securityKey = req.query.securityKey
+    const predefinedSecurityKey = "2025";
+
+    try {
+
+        if (securityKey === predefinedSecurityKey) {
+            res.render('user/add-new-user.ejs');
+        }
+
+        else {
+            res.render('user/user-dashboard.ejs', { error: 'Invalid security key.' });
+        }
+    }
+
+    catch (err) {
+        console.error(err);
+        res.sendStatus(500);
     }
 });
 
@@ -485,3 +510,4 @@ app.listen(port, () => {
 
 
 // --------------------- End ---------------------
+
