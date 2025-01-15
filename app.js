@@ -160,7 +160,7 @@ app.get('/contact-us', (req, res) => {
     res.render("contact-us.ejs")
 })
 
-app.get('/authentication-unitingcarehealth-adminside%%securitykey', (req, res) => {
+app.get('/authentication-unitingcarehealth', (req, res) => {
     res.render("user/security-key.ejs");
 });
 
