@@ -87,6 +87,10 @@ const UserSchema = new mongoose.Schema({
     name: String,
     username: { type: String, unique: true },
     email: { type: String, unique: true },
+    title: {
+        type: String,
+        default: ''
+    },
     password: String,
     resetToken: String,
     resetTokenExpiration: Date
@@ -470,37 +474,68 @@ app.post('/reset-password-user/:resetToken', async (req, res) => {
 });
 
 app.get('/fetch-users', async (req, res) => {
-
     try {
         const users = await User.find({});
-
-        const usersWithAssignments = await Promise.all(users.map(async (user) => {
-            const assignments = await Assignment.find({ email: user.email });
-
-            const whatsapp = assignments.length > 0 ? assignments[0].whatsapp : 'N/A';
-
-            return {
-                ...user._doc,
-                whatsapp,
-                totalAssignments: assignments.length // Count of assignments
-            };
-
-        }));
-
-        const sortBy = req.query.sortBy || 'totalAssignments';
-
-        const sortedUsers = usersWithAssignments.sort((a, b) => b[sortBy] - a[sortBy]);
-
-        res.render('admin/fetch-all-users', {
-            users: sortedUsers,
-            sortBy: sortBy
+        res.render('user/fetch-all-users.ejs', {
+            users
         });
-
     }
 
     catch (error) {
         console.error(error);
         res.status(500).send('Server Error');
+    }
+});
+
+app.get('/edit-user/:id', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) return res.status(404).send('User not found');
+        res.render('user/edit-user.ejs', { user });
+    }
+
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Error fetching user');
+    }
+});
+
+app.post('/update-user/:id', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        await User.findByIdAndUpdate(req.params.id, { email, password });
+        res.redirect('/fetch-users');
+    }
+
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Error updating user');
+    }
+});
+
+app.post('/delete-user/:id', async (req, res) => {
+    try {
+        await User.findByIdAndDelete(req.params.id);
+        res.redirect('/fetch-users');
+    }
+
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Error deleting user');
+    }
+});
+
+app.post('/assign-admin/:id', async (req, res) => {
+    try {
+        await User.findByIdAndUpdate(req.params.id, {
+            $set: { title: 'Admin' }
+        });
+        res.redirect('/fetch-users');
+    }
+
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Error assigning admin title');
     }
 });
 
@@ -510,4 +545,3 @@ app.listen(port, () => {
 
 
 // --------------------- End ---------------------
-
